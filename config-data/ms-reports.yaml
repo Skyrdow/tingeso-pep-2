@@ -1,6 +1,10 @@
 server:
   port: 8093
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/reports-db
+    username: postgres
+    password: postgres
 eureka:
   instance:
     hostname: localhost
