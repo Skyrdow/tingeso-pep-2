@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-vehicles-deployment
+  labels:
+    app: ms-vehicles-deployment
+spec:
+  selector:
+    matchLabels:
+      app: ms-vehicles-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ms-vehicles-deployment
+    spec:
+      containers:
+        - name: ms-vehicles
+          image: skyrdow/t2-ms-vehicles
+          ports:
+            - containerPort: 8094
+          env:
+            - name: SERVER_PORT
+              value: "8094"
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config-map
+                  key: DB_HOST_ORDERS
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config-map
+                  key: DB_PORT_ORDERS
+            - name: DB_DBNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config-map
+                  key: DB_DBNAME_ORDERS
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: DB_USER_ORDERS
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: DB_PASSWORD_ORDERS
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-vehicles-service
+  labels:
+    app: ms-vehicles-service
+spec:
+  selector:
+    app: ms-vehicles-deployment
+  ports:
+    - protocol: TCP
+      port: 8094
+      targetPort: 8094
+  type: LoadBalancer
