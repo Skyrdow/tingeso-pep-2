@@ -58,12 +58,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: postgres-credentials
-                  key: DB_USER_ORDERS
+                  key: DB_USER_VEHICLES
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-credentials
-                  key: DB_PASSWORD_ORDERS
+                  key: DB_PASSWORD_VEHICLES
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: vehicles-db-data
