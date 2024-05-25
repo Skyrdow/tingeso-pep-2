@@ -12,7 +12,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/repair-list")
-@CrossOrigin("*")
 public class ReparationListController {
     @Autowired
     ReparationListService reparationListService;
@@ -23,8 +22,9 @@ public class ReparationListController {
     }
 
     @GetMapping("/reparation-by-type")
-    public ResponseEntity<ReparationListEntity> getReparationByType(@RequestBody ReparationType reparationType) {
-        Optional<ReparationListEntity> rep = reparationListService.findByReparationType(reparationType);
+    public ResponseEntity<ReparationListEntity> getReparationByType(@RequestBody Integer reparationId) {
+        
+        Optional<ReparationListEntity> rep = reparationListService.findByReparationType(ReparationType.values()[reparationId - 1]);
         return rep.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.ok(new ReparationListEntity()));
     }
 

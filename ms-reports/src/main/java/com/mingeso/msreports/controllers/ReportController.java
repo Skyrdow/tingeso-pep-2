@@ -11,7 +11,6 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1/report")
-@CrossOrigin("*")
 public class ReportController {
     @Autowired
     ReportService reportService;
@@ -40,7 +39,7 @@ public class ReportController {
                     "carTypes", carTypesMaps);
             response.add(reparationMap);
         }
-
+        
         return ResponseEntity.ok(response);
     }
     @GetMapping("/2/{month}-{year}")

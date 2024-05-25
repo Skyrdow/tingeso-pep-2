@@ -33,6 +33,11 @@ docker build -t skyrdow/t2-ms-vehicles .
 docker push skyrdow/t2-ms-vehicles
 cd ..
 
+cd .\frontend\
+docker build -t skyrdow/t2-frontend .
+docker push skyrdow/t2-frontend
+cd ..
+
 kubectl delete -f .\postgres-config-map.yaml
 kubectl delete -f .\postgres-secrets.yaml
 kubectl delete -f .\config-server-deployment-service.yaml
@@ -46,6 +51,7 @@ kubectl delete -f .\ms-repair-list-deployment-service.yaml
 kubectl delete -f .\ms-repairs-deployment-service.yaml
 kubectl delete -f .\ms-reports-deployment-service.yaml
 kubectl delete -f .\ms-vehicles-deployment-service.yaml
+kubectl delete -f .\frontend-deployment-service.yaml
 
 kubectl apply -f .\postgres-config-map.yaml
 kubectl apply -f .\postgres-secrets.yaml
@@ -60,3 +66,6 @@ kubectl apply -f .\ms-repair-list-deployment-service.yaml
 kubectl apply -f .\ms-repairs-deployment-service.yaml
 kubectl apply -f .\ms-reports-deployment-service.yaml
 kubectl apply -f .\ms-vehicles-deployment-service.yaml
+kubectl apply -f .\frontend-deployment-service.yaml
+
+psql -U postgres

@@ -13,7 +13,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/reparation")
-@CrossOrigin("*")
 public class ReparationController {
     @Autowired
     ReparationService reparationService;

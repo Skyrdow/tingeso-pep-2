@@ -16,7 +16,7 @@ public class ReparationListEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private ReparationType id;
+    private Long id;
 
     private Long gasolinePrice;
     private Long dieselPrice;
