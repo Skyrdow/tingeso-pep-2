@@ -28,8 +28,8 @@ const HomeCard: React.FC<HomeCardProps> = ({
           {title}
         </h2>
         <div className="flex flex-wrap gap-2">
-          {badges.map((badge) => {
-            return <span className="badge badge-flat-success">{badge}</span>;
+          {badges.map((badge, index) => {
+            return <span key={index} className="badge badge-flat-success">{badge}</span>;
           })}
         </div>
         <div className="card-footer ">

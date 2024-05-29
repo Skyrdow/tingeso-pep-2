@@ -7,11 +7,7 @@ const AddPrice = () => {
   // region js
   const isFilled = () => {
     return (
-      !priceData.id ||
-      !priceData.dieselPrice ||
-      !priceData.electricoPrice ||
-      !priceData.gasolinaPrice ||
-      !priceData.hibridoPrice
+      false
     );
   };
 
@@ -19,7 +15,7 @@ const AddPrice = () => {
     id: 0,
     dieselPrice: 0,
     electricoPrice: 0,
-    gasolinaPrice: 0,
+    gasolinePrice: 0,
     hibridoPrice: 0
   });
 
@@ -43,7 +39,7 @@ const AddPrice = () => {
           id: 0,
           dieselPrice: 0,
           electricoPrice: 0,
-          gasolinaPrice: 0,
+          gasolinePrice: 0,
           hibridoPrice: 0
         });
         window.location.reload();
@@ -60,70 +56,70 @@ const AddPrice = () => {
       className="form-group priced bg-white p-4 max-w-80 h-full"
     >
       <div className="form-field">
-        <label className="form-label" htmlFor="patent">
+        <label className="form-label" htmlFor="id">
           Id:
         </label>
         <input
           className="input input-ghost-success"
           type="number"
-          id="patent"
-          name="patent"
+          id="id"
+          name="id"
           value={priceData.id}
           onChange={handleInputChange}
           required
         />
       </div>
       <div className="form-field">
-        <label className="form-label" htmlFor="patent">
+        <label className="form-label" htmlFor="dieselPrice">
           Precio Diesel:
         </label>
         <input
           className="input input-ghost-success"
           type="number"
-          id="patent"
-          name="patent"
+          id="dieselPrice"
+          name="dieselPrice"
           value={priceData.dieselPrice}
           onChange={handleInputChange}
           required
         />
       </div>
       <div className="form-field">
-        <label className="form-label" htmlFor="patent">
+        <label className="form-label" htmlFor="electricoPrice">
         Precio Electrico:
         </label>
         <input
           className="input input-ghost-success"
           type="number"
-          id="patent"
-          name="patent"
+          id="electricoPrice"
+          name="electricoPrice"
           value={priceData.electricoPrice}
           onChange={handleInputChange}
           required
         />
       </div>
       <div className="form-field">
-        <label className="form-label" htmlFor="patent">
+        <label className="form-label" htmlFor="gasolinaPrice">
         Precio Gasolina:
         </label>
         <input
           className="input input-ghost-success"
           type="number"
-          id="patent"
-          name="patent"
-          value={priceData.gasolinaPrice}
+          id="gasolinaPrice"
+          name="gasolinaPrice"
+          value={priceData.gasolinePrice}
           onChange={handleInputChange}
           required
         />
       </div>
       <div className="form-field">
-        <label className="form-label" htmlFor="patent">
+        <label className="form-label" htmlFor="hibridoPrice">
         Precio Hibrido:
         </label>
         <input
           className="input input-ghost-success"
           type="number"
-          id="patent"
-          name="patent"
+          id="hibridoPrice"
+          name="hibridoPrice"
           value={priceData.hibridoPrice}
           onChange={handleInputChange}
           required

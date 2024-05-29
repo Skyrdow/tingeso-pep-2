@@ -35,7 +35,7 @@ public class ReportService {
                 for (ReparationEntity reparation : reparations) {
                     List<ReparationType> types = reparationsFeignClient.getReparationTypes(reparation);
                     for (ReparationType type : types) {
-                        Long price = reparationListFeignClient.getReparationByType(type).get(car.getMotorType());
+                        Long price = reparationListFeignClient.getReparationByType(type.ordinal()).get(car.getMotorType());
                         if (!carTypeData.containsKey(type)) {
                             carTypeData.put(type, Map.of("count", 1, "totalPrice", price));
                         } else {
@@ -68,7 +68,7 @@ public class ReportService {
                 // Calcular por tipo el precio y sumarlo
                 for (ReparationType type : types)
                 {
-                    Long price = reparationListFeignClient.getReparationByType(type).get(reparation.getMotorType());
+                    Long price = reparationListFeignClient.getReparationByType(type.ordinal()).get(reparation.getMotorType());
                     if (!result.containsKey(type)) {
                         result.put(type, Map.of("count", 1, "totalPrice", price));
                     } else {

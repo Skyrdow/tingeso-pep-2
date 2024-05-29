@@ -6,7 +6,7 @@ import { Car, Price, Reparation } from "./types";
 
 
 const http = axios.create({
-  baseURL: `http://127.0.0.1:65412/api/v1`,
+  baseURL: `http://127.0.0.1:63679/api/v1`,
   headers: {
     "Content-type": "application/json",
   },
@@ -37,9 +37,6 @@ const getReparations = () => {
 };
 
 const postReparation = (data: Reparation) => {
-  console.log(data.admissionDate);
-  console.log(data.repairExitDate);
-
   const formattedData = JSON.stringify({
     admissionDate: data.admissionDate,
     patent: data.patent,

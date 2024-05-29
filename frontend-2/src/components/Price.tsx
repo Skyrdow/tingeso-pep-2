@@ -8,11 +8,11 @@ interface PriceProps {
 const PriceElement: React.FC<PriceProps> = ({ data }) => {
   return (
     <tr>
-      <th>{ReparationType[data.id]}</th>
+      <th>{ReparationType[data.id]} ({data.id})</th>
+      <th>{data.gasolinePrice}</th>
       <th>{data.dieselPrice}</th>
-      <th>{data.electricoPrice}</th>
-      <th>{data.gasolinaPrice}</th>
       <th>{data.hibridoPrice}</th>
+      <th>{data.electricoPrice}</th>
     </tr>
   );
 };

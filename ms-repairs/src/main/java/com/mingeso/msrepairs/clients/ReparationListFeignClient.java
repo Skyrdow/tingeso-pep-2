@@ -19,8 +19,8 @@ public interface ReparationListFeignClient {
     @GetMapping("/")
     public List<ReparationListEntity> getReparationList();
 
-    @GetMapping("/reparation-by-type")
-    public ReparationListEntity getReparationByType(@RequestBody ReparationType reparationType);
+    @PostMapping("/reparation-by-type")
+    public ReparationListEntity getReparationByType(@RequestBody Integer reparationId);
 
     @PostMapping("/")
     public ReparationListEntity saveReparationList(@RequestBody ReparationListEntity reparationListEntity);

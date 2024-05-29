@@ -21,10 +21,10 @@ public class ReparationListController {
         return ResponseEntity.ok(reparationListService.getReparationList());
     }
 
-    @GetMapping("/reparation-by-type")
+    @PostMapping("/reparation-by-type")
     public ResponseEntity<ReparationListEntity> getReparationByType(@RequestBody Integer reparationId) {
         
-        Optional<ReparationListEntity> rep = reparationListService.findByReparationType(ReparationType.values()[reparationId - 1]);
+        Optional<ReparationListEntity> rep = reparationListService.findByReparationType(Long.valueOf(reparationId));
         return rep.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.ok(new ReparationListEntity()));
     }
 

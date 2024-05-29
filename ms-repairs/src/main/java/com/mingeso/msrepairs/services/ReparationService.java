@@ -103,7 +103,7 @@ public class ReparationService {
         Long priceSum = 0L;
         for (ReparationEntity reparation : reparations) {
             for (ReparationType reparationType : getReparationTypes(reparation)) {
-                priceSum += reparationListFeignClient.getReparationByType(reparationType).get(car.getMotorType());
+                priceSum += reparationListFeignClient.getReparationByType(reparationType.ordinal()).get(car.getMotorType());
             }
         }
         return priceSum;

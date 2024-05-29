@@ -162,8 +162,8 @@ const AddCar = () => {
       </div>
       {Object.values(ReparationType)
         .filter((value) => typeof value == "string")
-        .map((type) => (
-          <div className="form-field">
+        .map((type, index) => (
+          <div className="form-field" key={index}>
             <label className="flex gap-2 cursor-pointer">
               <input
                 id={"id-" + type}

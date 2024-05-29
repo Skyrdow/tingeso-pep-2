@@ -33,7 +33,7 @@ docker build -t skyrdow/t2-ms-vehicles .
 docker push skyrdow/t2-ms-vehicles
 cd ..
 
-cd .\frontend\
+cd .\frontend-2\
 docker build -t skyrdow/t2-frontend .
 docker push skyrdow/t2-frontend
 cd ..
@@ -69,3 +69,5 @@ kubectl apply -f .\ms-vehicles-deployment-service.yaml
 kubectl apply -f .\frontend-deployment-service.yaml
 
 psql -U postgres
+
+minikube service gateway-server-service

@@ -40,7 +40,7 @@ export type Car = {
 
 export type Price = {
   id: number;
-  gasolinaPrice: number;
+  gasolinePrice: number;
   dieselPrice: number;
   hibridoPrice: number;
   electricoPrice: number;

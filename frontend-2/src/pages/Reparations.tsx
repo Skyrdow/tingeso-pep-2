@@ -39,8 +39,8 @@ const Reparations = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((reparation: ReparationT) => (
-                  <Reparation data={reparation} />
+                {data.map((reparation: ReparationT, index) => (
+                  <Reparation data={reparation} key={index} />
                 ))}
               </tbody>
             </table>

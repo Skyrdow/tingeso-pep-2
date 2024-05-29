@@ -6,7 +6,7 @@ const Home = () => {
     <div className="flex w-full flex-col gap-10 items-center">
       <Title title="Bienvenido a tu taller" svg="/car_repair.svg"></Title>
       <HomeCard
-        title="Vehiculos"
+        title="Lista de Precios"
         link="/Prices"
         description="Gestiona los precios"
         badges={["Lista", "Agregar"]}

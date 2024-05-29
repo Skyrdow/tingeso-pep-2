@@ -24,6 +24,11 @@ public class ReparationController {
         for (ReparationEntity reparation: newReparations) {
             response.add(Map.of(
                     "patent", reparation.getPatent(),
+                    "discount", reparation.getDiscountAmount(),
+                    "iva", reparation.getIvaAmount(),
+                    "total", reparation.getTotalAmount(),
+                    "sum", reparation.getSumAmount(),
+                    "surcharge", reparation.getSurchargeAmount(),
                     "admissionDate", reparation.getAdmissionDate(),
                     "reparationTypes", reparationService.getReparationTypes(reparation).toString(),
                     "repairExitDate", reparation.getRepairExitDate(),

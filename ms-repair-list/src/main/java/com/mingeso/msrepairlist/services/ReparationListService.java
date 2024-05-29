@@ -20,7 +20,7 @@ public class ReparationListService {
     public ReparationListEntity saveReparationList(ReparationListEntity reparationListEntity) {
         return reparationListRepository.save(reparationListEntity);
     }
-    public Optional<ReparationListEntity> findByReparationType(ReparationType reparationType) {
-        return reparationListRepository.findById(reparationType);
+    public Optional<ReparationListEntity> findByReparationType(Long reparationId) {
+        return reparationListRepository.findById(reparationId);
     }
 }

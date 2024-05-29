@@ -12,12 +12,12 @@ const Prices = () => {
       .getPrice()
       .then((response) => {
         console.log(response);
-        
-        setData(response.data);
+        setData(response.data.sort((a: { id: number; }, b: { id: number; }) => a.id - b.id));
       })
       .catch((e) => {
         console.log(e);
       });
+      
   }, []);
 
   return (
@@ -39,8 +39,8 @@ const Prices = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((price: any) => (
-                  <Price data={price} />
+                {data.map((price: any, index: number) => (
+                  <Price data={price} key={index}/>
                 ))}
               </tbody>
             </table>
