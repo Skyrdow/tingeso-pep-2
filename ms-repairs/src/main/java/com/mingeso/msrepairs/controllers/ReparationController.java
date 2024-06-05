@@ -42,7 +42,7 @@ public class ReparationController {
         List<ReparationEntity> newReparations = reparationService.getReparations();
         return ResponseEntity.ok(newReparations);
     }
-    @GetMapping("/types")
+    @PostMapping("/types")
     public ResponseEntity<List<ReparationType>> getReparationTypes(@RequestBody ReparationEntity reparation) {
         List<ReparationType> newReparations = reparationService.getReparationTypes(reparation);
         return ResponseEntity.ok(newReparations);

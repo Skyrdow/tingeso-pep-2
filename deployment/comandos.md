@@ -1,39 +1,47 @@
 cd .\config-server\
+mvn clean install
 docker build -t skyrdow/t2-config-server .
 docker push skyrdow/t2-config-server
 cd ..
 
 cd .\eureka-server\
+mvn clean install
 docker build -t skyrdow/t2-eureka-server .
 docker push skyrdow/t2-eureka-server
 cd ..
 
 cd .\gateway-server\
+mvn clean install
 docker build -t skyrdow/t2-gateway-server .
 docker push skyrdow/t2-gateway-server
 cd ..
 
 cd .\ms-repair-list\
+mvn clean install
 docker build -t skyrdow/t2-ms-repair-list .
 docker push skyrdow/t2-ms-repair-list
 cd ..
 
 cd .\ms-repairs\
+mvn clean install
 docker build -t skyrdow/t2-ms-repairs .
 docker push skyrdow/t2-ms-repairs
 cd ..
 
 cd .\ms-reports\
+mvn clean install
 docker build -t skyrdow/t2-ms-reports .
 docker push skyrdow/t2-ms-reports
 cd ..
 
 cd .\ms-vehicles\
+mvn clean install
 docker build -t skyrdow/t2-ms-vehicles .
 docker push skyrdow/t2-ms-vehicles
 cd ..
 
 cd .\frontend-2\
+npm run build
 docker build -t skyrdow/t2-frontend .
 docker push skyrdow/t2-frontend
 cd ..

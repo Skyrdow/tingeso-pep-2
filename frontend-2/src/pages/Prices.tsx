@@ -28,7 +28,7 @@ const Prices = () => {
         <section className="max-h-full w-full overflow-scroll bg-white p-5 rounded-xl shadow-xl">
           {/* titulo quiza */}
           <div className="flex">
-            <table className="table-zebra table bg-success/10">
+            <table className="table bg-success/10">
               <thead>
                 <tr>
                   <th>Id</th>

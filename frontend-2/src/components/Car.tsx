@@ -9,7 +9,7 @@ interface CarProps {
 
 const CarElement: React.FC<CarProps> = ({ data }) => {
   return (
-    <tr>
+    <tr className="even:bg-amber-50 odd:bg-green-50">
       <th>{data.patent}</th>
       <td>{data.brand}</td>
       <td>{data.model}</td>

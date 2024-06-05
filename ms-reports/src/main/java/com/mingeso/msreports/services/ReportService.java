@@ -61,7 +61,10 @@ public class ReportService {
         {
             Map<ReparationType, Map> result = new HashMap<>();
             List<ReparationEntity> reparationsMonth = filterReparationsByMonth(reparations, (month - monthInt + 12) % 12, month > monthInt ? year : year - 1);
-
+            for (ReparationType type : ReparationType.values())
+            {
+                result.put(type, Map.of("count", 0, "totalPrice", 0));
+            }
             for (ReparationEntity reparation : reparationsMonth) {
                 // Obtener todos los tipos de cada reparacion
                 List<ReparationType> types = reparationsFeignClient.getReparationTypes(reparation);
@@ -69,14 +72,10 @@ public class ReportService {
                 for (ReparationType type : types)
                 {
                     Long price = reparationListFeignClient.getReparationByType(type.ordinal()).get(reparation.getMotorType());
-                    if (!result.containsKey(type)) {
-                        result.put(type, Map.of("count", 1, "totalPrice", price));
-                    } else {
-                        Map accumulator = result.get(type);
-                        Integer newCount = (Integer) accumulator.get("count") + 1;
-                        Long newPrice = (Long) accumulator.get("totalPrice") + price;
-                        result.put(type, Map.of("count", newCount, "totalPrice", newPrice));
-                    }
+                    Map accumulator = result.get(type);
+                    Integer newCount = ((Number) accumulator.get("count")).intValue() + 1;
+                    Long newPrice = ((Number) accumulator.get("totalPrice")).longValue() + price;
+                    result.put(type, Map.of("count", newCount, "totalPrice", newPrice));
                 }
             }
             resultList.add(result);
@@ -90,7 +89,7 @@ public class ReportService {
             Calendar dateCal = Calendar.getInstance();
             dateCal.setTime(reparationEntity.getAdmissionDate());
 
-            return dateCal.get(Calendar.MONTH) == month && dateCal.get(Calendar.YEAR) == year;
+            return dateCal.get(Calendar.MONTH) == (month - 1) && dateCal.get(Calendar.YEAR) == year;
         }).toList();
     }
 }

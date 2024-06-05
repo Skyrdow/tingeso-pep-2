@@ -52,4 +52,9 @@ export type Reparation = {
   reparationTypes: string[];
   repairExitDate: Date;
   retrievalDate: Date;
+  discount: number;
+  iva: number;
+  sum: number;
+  surcharge: number;
+  total: number;
 };

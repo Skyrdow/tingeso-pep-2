@@ -1,5 +1,6 @@
 import Title from "../components/Title";
 import HomeCard from "../components/HomeCard";
+import ChangePort from "../components/ChangePort";
 
 const Home = () => {
   return (
@@ -36,6 +37,7 @@ const Home = () => {
         ]}
         svg="/report.svg"
       ></HomeCard>
+      <ChangePort></ChangePort>
     </div>
   );
 };

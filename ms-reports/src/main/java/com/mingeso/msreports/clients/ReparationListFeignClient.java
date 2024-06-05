@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Optional;
 
 @FeignClient(value = "ms-repair-list",
-        path = "/api/v1/reparair-list",
+        path = "/api/v1/repair-list",
         configuration = {FeignClientConfig.class})
 public interface ReparationListFeignClient {
     @PostMapping("/reparation-by-type")

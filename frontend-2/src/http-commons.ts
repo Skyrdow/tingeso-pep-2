@@ -4,13 +4,21 @@ import { Car, Price, Reparation } from "./types";
 // const url = import.meta.env.VITE_BACKEND_URL;
 // const port = import.meta.env.VITE_BACKEND_PORT;
 
-
-const http = axios.create({
-  baseURL: `http://127.0.0.1:63679/api/v1`,
+let http = axios.create({
+  baseURL: `http://127.0.0.1:${localStorage.getItem("port")}/api/v1`,
   headers: {
     "Content-type": "application/json",
   },
 });
+
+const changePort = (newPort: string) => {
+  http = axios.create({
+    baseURL: `http://127.0.0.1:${newPort}/api/v1`,
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+};
 
 const getPrice = () => {
   return http.get("/repair-list/");
@@ -49,19 +57,14 @@ const postReparation = (data: Reparation) => {
   return http.post("/reparation/", formattedData);
 };
 
-const getReport1 = () => {
-  return http.get("/report/1");
+const getReport1 = (date: string) => {
+  return http.get("/report/1/" + date);
 };
-const getReport2 = () => {
-  return http.get("/report/2");
-};
-const getReport3 = () => {
-  return http.get("/report/3");
-};
-const getReport4 = () => {
-  return http.get("/report/4");
+const getReport2 = (date: string) => {
+  return http.get("/report/2/" + date);
 };
 export default {
+  changePort,
   getCars,
   postCar,
   setBrandBonus,
@@ -69,8 +72,6 @@ export default {
   postReparation,
   getReport1,
   getReport2,
-  getReport3,
-  getReport4,
   getPrice,
   postPrice,
 };

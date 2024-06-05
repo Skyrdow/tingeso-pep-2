@@ -53,7 +53,7 @@ const AddPrice = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="form-group priced bg-white p-4 max-w-80 h-full"
+      className="form-group card bg-white p-4 max-w-80 h-full"
     >
       <div className="form-field">
         <label className="form-label" htmlFor="id">
@@ -65,6 +65,20 @@ const AddPrice = () => {
           id="id"
           name="id"
           value={priceData.id}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+      <div className="form-field">
+        <label className="form-label" htmlFor="gasolinaPrice">
+        Precio Gasolina:
+        </label>
+        <input
+          className="input input-ghost-success"
+          type="number"
+          id="gasolinaPrice"
+          name="gasolinePrice"
+          value={priceData.gasolinePrice}
           onChange={handleInputChange}
           required
         />
@@ -84,34 +98,6 @@ const AddPrice = () => {
         />
       </div>
       <div className="form-field">
-        <label className="form-label" htmlFor="electricoPrice">
-        Precio Electrico:
-        </label>
-        <input
-          className="input input-ghost-success"
-          type="number"
-          id="electricoPrice"
-          name="electricoPrice"
-          value={priceData.electricoPrice}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div className="form-field">
-        <label className="form-label" htmlFor="gasolinaPrice">
-        Precio Gasolina:
-        </label>
-        <input
-          className="input input-ghost-success"
-          type="number"
-          id="gasolinaPrice"
-          name="gasolinaPrice"
-          value={priceData.gasolinePrice}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div className="form-field">
         <label className="form-label" htmlFor="hibridoPrice">
         Precio Hibrido:
         </label>
@@ -121,6 +107,20 @@ const AddPrice = () => {
           id="hibridoPrice"
           name="hibridoPrice"
           value={priceData.hibridoPrice}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+      <div className="form-field">
+        <label className="form-label" htmlFor="electricoPrice">
+        Precio Electrico:
+        </label>
+        <input
+          className="input input-ghost-success"
+          type="number"
+          id="electricoPrice"
+          name="electricoPrice"
+          value={priceData.electricoPrice}
           onChange={handleInputChange}
           required
         />

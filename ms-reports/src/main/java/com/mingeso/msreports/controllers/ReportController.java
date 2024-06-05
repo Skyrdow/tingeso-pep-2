@@ -17,12 +17,12 @@ public class ReportController {
 
     @GetMapping("/1/{month}-{year}")
     public ResponseEntity<?> getReport1(@PathVariable Integer month, @PathVariable Integer year) {
-        Map<CarType, Map> report2 = reportService.getReport1(month, year);
+        Map<CarType, Map> report1 = reportService.getReport1(month, year);
         List<Map> response = new ArrayList<>();
         for (ReparationType reparationType: ReparationType.values()) {
             List<Map> carTypesMaps = new ArrayList<>();
             for (CarType carType:CarType.values()) {
-                Map carTypeReport = (Map) report2.get(carType).get(reparationType);
+                Map carTypeReport = (Map) report1.get(carType).get(reparationType);
                 if (carTypeReport == null) {
                     carTypesMaps.add(Map.of(
                             "carType", carType,
@@ -45,6 +45,8 @@ public class ReportController {
     @GetMapping("/2/{month}-{year}")
     public ResponseEntity<?> getReport2(@PathVariable Integer month, @PathVariable Integer year) {
         List<Map<ReparationType, Map>> report2 = reportService.getReport2(month, year);
+        System.out.println("reporte 2");
+        System.out.println(report2);
         List<Map> response = new ArrayList<>();
         for (ReparationType reparationType: ReparationType.values()) {
             List<Map> monthsMap = new ArrayList<>();
@@ -58,8 +60,8 @@ public class ReportController {
                 } else {
                     Map monthReport = report2.get(monthInt).get(reparationType);
                     Map lastMonthReport = report2.get(monthInt + 1).get(reparationType);
-                    Float priceVariation = (float) (((Long)monthReport.get("totalPrice")/(Long)lastMonthReport.get("totalPrice")) - 1);
-                    Float countVariation = (float) (((Long)monthReport.get("count")/(Long)lastMonthReport.get("count")) - 1);
+                    Float priceVariation = ((Number) monthReport.get("totalPrice")).floatValue() / ((Number) lastMonthReport.get("totalPrice")).floatValue() - 1;
+                    Float countVariation = ((Number) monthReport.get("count")).floatValue() / ((Number) lastMonthReport.get("count")).floatValue() - 1;
                     monthsMap.add(Map.of(
                             "month", monthInt,
                             "totalPrice", monthReport.get("totalPrice"),
