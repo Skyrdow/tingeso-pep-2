@@ -23,6 +23,11 @@ const AddCar = () => {
     reparationTypes: [],
     repairExitDate: new Date(),
     retrievalDate: new Date(),
+    total: 0,
+    sum: 0,
+    discount: 0,
+    surcharge: 0,
+    iva: 0,
   });
 
   const handleInputChange = (
@@ -47,6 +52,11 @@ const AddCar = () => {
           reparationTypes: [],
           repairExitDate: new Date(),
           retrievalDate: new Date(),
+          total: 0,
+          sum: 0,
+          discount: 0,
+          surcharge: 0,
+          iva: 0,
         });
         window.location.reload();
       })

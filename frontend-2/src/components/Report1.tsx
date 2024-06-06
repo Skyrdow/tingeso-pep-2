@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import httpCommons from "../http-commons";
-import Report1Table from "./Report1Table";
 
 const Report1 = () => {
   const [report1, setReport1] = useState([]);
